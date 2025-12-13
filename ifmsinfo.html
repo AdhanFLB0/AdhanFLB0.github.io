@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>IFMS Informa</title>
-
+    <title>IFMS Informa - Trabalho de Português</title>
+    
     <style>
-        
+        /* RESET E BASE */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             background: #f0f0f0;
-            padding-top: 50px;
-            
+            padding-top: 50px; /* Cria espaço para a barra fixa */
         }
 
-        
+        /* 📌 BARRA DE NAVEGAÇÃO SUPERIOR FIXA (ESTILO PORTAL DE NOTÍCIAS) */
         .navbar {
-            background: #CC0000;
-            
+            background: #CC0000; /* Vermelho G1 (cor forte de notícia) */
             color: white;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            
+            position: fixed; /* Fixa no topo */
             top: 0;
             width: 100%;
             box-sizing: border-box;
@@ -34,26 +30,27 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* LOGO IFMS INFORMA */
         .logo {
             font-size: 1.8em;
-            font-weight: bold;
+            font-weight: normal;
             letter-spacing: -1px;
             text-transform: uppercase;
         }
-
-        .logo-one {
-            color: #09d814;
-            
+        
+        /* COR VERDE PARA O IFMS */
+        .logo-ifms {
+            color: #008000; /* Verde IFMS (pode ajustar o tom) */
+            font-weight: bold;
         }
 
-    
+        /* 🍔 CONTAINER E BOTÃO DO MENU */
         .menu-container {
             position: relative;
         }
 
         .menu-button {
-            background: #000;
-            
+            background: #000; /* Fundo preto para destaque */
             color: white;
             border: none;
             padding: 8px 15px;
@@ -65,7 +62,7 @@
             align-items: center;
             justify-content: space-between;
             width: 200px;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
         }
 
         .menu-arrow {
@@ -74,43 +71,45 @@
         }
 
         .menu-arrow.open {
-            transform: rotate(180deg);
-            
+            transform: rotate(180deg); /* Gira a seta quando o menu está aberto */
         }
 
-        
+        /* ⬇️ LISTA DO MENU DROPDOWN */
         .menu-list {
-            display: none;
+            display: none; /* ESCONDIDO POR PADRÃO */
             position: absolute;
-            top: 100%;
+            top: 100%; /* Abaixo do botão */
             right: 0;
             list-style: none;
             padding: 0;
             margin: 0;
             background: #333;
             min-width: 250px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            max-height: 400px; /* Limita altura para scroll em telas pequenas */
+            overflow-y: auto; /* Adiciona scroll se lista for grande */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 999;
             border-radius: 0 0 4px 4px;
         }
 
         .menu-list.show {
-            display: block;
-    
+            display: block; /* MOSTRA O MENU QUANDO TEM A CLASSE 'show' (via JS) */
         }
 
         .menu-list li a {
             color: white;
-            padding: 12px 15px;
+            padding: 10px 15px;
             text-decoration: none;
             display: block;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
+            font-size: 0.9em;
         }
 
         .menu-list li a:hover {
             background-color: #575757;
         }
 
+        /* 📰 CONTEÚDO DAS NOTÍCIAS */
         .content-wrapper {
             padding: 20px;
             max-width: 900px;
@@ -134,10 +133,10 @@
 
         .news-section h2 {
             color: #333;
-            border-left: 5px solid #CC0000;
+            border-left: 5px solid #008000; /* Linha de destaque verde */
             padding-left: 10px;
         }
-
+        
         .back-to-top {
             display: block;
             margin-top: 20px;
@@ -148,64 +147,140 @@
         }
     </style>
 </head>
-
 <body>
 
     <header class="navbar" id="top">
-        <div class="logo"><span class="logo-one">IFMS </span>Informa</div>
+        <div class="logo"><span class="logo-ifms">IFMS</span> informa</div>
         <div class="menu-container">
             <button class="menu-button" id="menuButton">
-                Menu de Notícias
+                Selecione a Notícia
                 <span id="menuArrow" class="menu-arrow">&#9660;</span>
             </button>
-
+            
             <ul id="menuList" class="menu-list">
-                <li><a href="#noticia-principal"></a></li>
-                <li><a href="#politica">Notícias de Política</a></li>
-                <li><a href="#mundo">Notícias do Mundo</a></li>
-                <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#creditos">Créditos do Trabalho</a></li>
+                <li><a href="#noticia-grupo-01">Notícia Grupo 01: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-02">Notícia Grupo 02: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-03">Notícia Grupo 03: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-04">Notícia Grupo 04: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-05">Notícia Grupo 05: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-06">Notícia Grupo 06: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-07">Notícia Grupo 07: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-08">Notícia Grupo 08: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-09">Notícia Grupo 09: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-10">Notícia Grupo 10: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-11">Notícia Grupo 11: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-12">Notícia Grupo 12: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-13">Notícia Grupo 13: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-14">Notícia Grupo 14: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-15">Notícia Grupo 15: [Título Aqui]</a></li>
+                <li><a href="#noticia-grupo-16">Notícia Grupo 16: [Título Aqui]</a></li>
             </ul>
         </div>
     </header>
 
     <main class="content-wrapper">
-        <h1 class="main-title">Principais Noticias</h1>
+        <h1 class="main-title">Destaques do IFMS Informa</h1>
 
-        <section id="noticia-principal" class="news-section">
-            <h2>🔥 [SUBSTITUA AQUI] Título da sua Notícia Principal</h2>
-            <p class="summary">Breve resumo da notícia. (AQUI VOCÊ ESCREVE SUA INTRODUÇÃO).</p>
-            <div class="news-body">
-                <p>O texto completo da sua notícia principal vai aqui. Desenvolva o tema com parágrafos, detalhes e
-                    citações. Lembre-se de adaptar a linguagem ao estilo jornalístico, como é o objetivo do trabalho de
-                    português.</p>
-                <p>...Continue o desenvolvimento aqui.</p>
-            </div>
+        <section id="noticia-grupo-01" class="news-section">
+            <h2>Notícia Grupo 01: [Insira o Título Jornalístico Aqui]</h2>
+            <p><strong>Resumo:</strong> Introdução do seu texto.</p>
+            <p>O texto completo da notícia do Grupo 01 vai aqui. É importante que o conteúdo seja bem estruturado, com parágrafos claros e coesos.</p>
             <a href="#top" class="back-to-top">Voltar ao topo</a>
         </section>
 
-        <section id="politica" class="news-section">
-            <h2>🏛️ [SUBSTITUA AQUI] Política: Título da Notícia</h2>
-            <p>Seu texto sobre política...</p>
+        <section id="noticia-grupo-02" class="news-section">
+            <h2>Notícia Grupo 02: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
             <a href="#top" class="back-to-top">Voltar ao topo</a>
         </section>
 
-        <section id="mundo" class="news-section">
-            <h2>🌍 [SUBSTITUA AQUI] Mundo: Título da Notícia Internacional</h2>
-            <p>Seu texto sobre notícias internacionais...</p>
+        <section id="noticia-grupo-03" class="news-section">
+            <h2>Notícia Grupo 03: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-04" class="news-section">
+            <h2>Notícia Grupo 04: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
             <a href="#top" class="back-to-top">Voltar ao topo</a>
         </section>
 
-        <section id="tecnologia" class="news-section">
-            <h2>📱 [SUBSTITUA AQUI] Tecnologia: Título de Notícia Tech</h2>
-            <p>Seu texto sobre tecnologia...</p>
+        <section id="noticia-grupo-05" class="news-section">
+            <h2>Notícia Grupo 05: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
             <a href="#top" class="back-to-top">Voltar ao topo</a>
         </section>
-
-        <section id="creditos" class="news-section">
-            <h2>Créditos e Referências</h2>
-            <p>Desenvolvido por [Seu Nome] para o trabalho de Português.</p>
+        
+        <section id="noticia-grupo-06" class="news-section">
+            <h2>Notícia Grupo 06: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
             <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-07" class="news-section">
+            <h2>Notícia Grupo 07: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-08" class="news-section">
+            <h2>Notícia Grupo 08: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-09" class="news-section">
+            <h2>Notícia Grupo 09: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-10" class="news-section">
+            <h2>Notícia Grupo 10: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-11" class="news-section">
+            <h2>Notícia Grupo 11: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-12" class="news-section">
+            <h2>Notícia Grupo 12: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-13" class="news-section">
+            <h2>Notícia Grupo 13: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-14" class="news-section">
+            <h2>Notícia Grupo 14: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-15" class="news-section">
+            <h2>Notícia Grupo 15: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section id="noticia-grupo-16" class="news-section">
+            <h2>Notícia Grupo 16: [Insira o Título Jornalístico Aqui]</h2>
+            <p>Seu texto aqui...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+        
+        <section class="news-section">
+            <h2>Créditos Finais</h2>
+            <p>Trabalho de Português para [Nome da Turma] - [Ano/Série].</p>
         </section>
 
     </main>
@@ -215,18 +290,22 @@
         const menuList = document.getElementById('menuList');
         const menuArrow = document.getElementById('menuArrow');
 
-    
+        // 1. Lógica para abrir/fechar o menu ao clicar no botão
         menuButton.addEventListener('click', () => {
-        
+            // Adiciona ou remove a classe 'show' (mostra/esconde a lista)
             menuList.classList.toggle('show');
+            // Adiciona ou remove a classe 'open' (rotaciona a seta)
             menuArrow.classList.toggle('open');
         });
 
+        // 2. Lógica para fechar o menu ao clicar em um item da lista
         menuList.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-
+            if (e.target.tagName === 'A') { // Verifica se o clique foi em um link (<a>)
+                // Fecha o menu
                 menuList.classList.remove('show');
                 menuArrow.classList.remove('open');
+                
+                // Faz a navegação para a seção de forma suave
                 e.preventDefault();
                 const targetId = e.target.getAttribute('href');
                 document.querySelector(targetId).scrollIntoView({
@@ -234,7 +313,10 @@
                 });
             }
         });
+
+        // 3. Lógica para fechar o menu se clicar fora
         document.addEventListener('click', (e) => {
+            // Verifica se o clique NÃO foi dentro do botão e NÃO foi dentro da lista do menu
             if (!menuButton.contains(e.target) && !menuList.contains(e.target)) {
                 menuList.classList.remove('show');
                 menuArrow.classList.remove('open');
@@ -242,5 +324,4 @@
         });
     </script>
 </body>
-
 </html>
