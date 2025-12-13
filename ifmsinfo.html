@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IFMS Informa</title>
+
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f0f0f0;
+            padding-top: 50px;
+            
+        }
+
+        
+        .navbar {
+            background: #CC0000;
+            
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            
+            top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo-one {
+            color: #09d814;
+            
+        }
+
+    
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-button {
+            background: #000;
+            
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-arrow {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .menu-arrow.open {
+            transform: rotate(180deg);
+            
+        }
+
+        
+        .menu-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: #333;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .menu-list.show {
+            display: block;
+    
+        }
+
+        .menu-list li a {
+            color: white;
+            padding: 12px 15px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .menu-list li a:hover {
+            background-color: #575757;
+        }
+
+        .content-wrapper {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            color: #CC0000;
+            border-bottom: 3px solid #CC0000;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .news-section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-section h2 {
+            color: #333;
+            border-left: 5px solid #CC0000;
+            padding-left: 10px;
+        }
+
+        .back-to-top {
+            display: block;
+            margin-top: 20px;
+            text-align: right;
+            color: #CC0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar" id="top">
+        <div class="logo"><span class="logo-one">IFMS </span>Informa</div>
+        <div class="menu-container">
+            <button class="menu-button" id="menuButton">
+                Menu de Notícias
+                <span id="menuArrow" class="menu-arrow">&#9660;</span>
+            </button>
+
+            <ul id="menuList" class="menu-list">
+                <li><a href="#noticia-principal"></a></li>
+                <li><a href="#politica">Notícias de Política</a></li>
+                <li><a href="#mundo">Notícias do Mundo</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#creditos">Créditos do Trabalho</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <h1 class="main-title">Principais Noticias</h1>
+
+        <section id="noticia-principal" class="news-section">
+            <h2>🔥 [SUBSTITUA AQUI] Título da sua Notícia Principal</h2>
+            <p class="summary">Breve resumo da notícia. (AQUI VOCÊ ESCREVE SUA INTRODUÇÃO).</p>
+            <div class="news-body">
+                <p>O texto completo da sua notícia principal vai aqui. Desenvolva o tema com parágrafos, detalhes e
+                    citações. Lembre-se de adaptar a linguagem ao estilo jornalístico, como é o objetivo do trabalho de
+                    português.</p>
+                <p>...Continue o desenvolvimento aqui.</p>
+            </div>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+
+        <section id="politica" class="news-section">
+            <h2>🏛️ [SUBSTITUA AQUI] Política: Título da Notícia</h2>
+            <p>Seu texto sobre política...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+
+        <section id="mundo" class="news-section">
+            <h2>🌍 [SUBSTITUA AQUI] Mundo: Título da Notícia Internacional</h2>
+            <p>Seu texto sobre notícias internacionais...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+
+        <section id="tecnologia" class="news-section">
+            <h2>📱 [SUBSTITUA AQUI] Tecnologia: Título de Notícia Tech</h2>
+            <p>Seu texto sobre tecnologia...</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+
+        <section id="creditos" class="news-section">
+            <h2>Créditos e Referências</h2>
+            <p>Desenvolvido por [Seu Nome] para o trabalho de Português.</p>
+            <a href="#top" class="back-to-top">Voltar ao topo</a>
+        </section>
+
+    </main>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const menuList = document.getElementById('menuList');
+        const menuArrow = document.getElementById('menuArrow');
+
+    
+        menuButton.addEventListener('click', () => {
+        
+            menuList.classList.toggle('show');
+            menuArrow.classList.toggle('open');
+        });
+
+        menuList.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+
+                menuList.classList.remove('show');
+                menuArrow.classList.remove('open');
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!menuButton.contains(e.target) && !menuList.contains(e.target)) {
+                menuList.classList.remove('show');
+                menuArrow.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+</html>
