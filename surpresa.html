@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Um Presente para Você!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+  <style>
+    /* ------------------------------------------- */
+    /* CONFIGURAÇÃO INICIAL E EFEITO DRAMÁTICO */
+    /* ------------------------------------------- */
+
+    :root {
+      /* Cor de fundo inicial alterada para Preto Absoluto */
+      --cor-fundo-inicial: #000000;
+      /* Cor do texto alterada para Branco */
+      --cor-texto: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      /* Fonte pixelizada */
+      font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+      background-color: var(--cor-fundo-inicial);
+      color: var(--cor-texto);
+      text-align: center;
+      overflow: hidden;
+      transition: background-color 2s ease-in-out;
+    }
+
+    /* ------------------------------------------- */
+    /* TELAS GERAIS */
+    /* ------------------------------------------- */
+
+    .tela {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 20px;
+      /* Aplica o filtro pixelado */
+      image-rendering: pixelated;
+    }
+
+    .tela.ativo {
+      display: flex;
+    }
+
+    /* ------------------------------------------- */
+    /* ESTILO DO PRESENTE */
+    /* ------------------------------------------- */
+
+    #presente {
+      width: 150px;
+      height: 150px;
+      background-color: #ff4136;
+      border: 10px solid #f0f0f0;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      animation: pulsar 1.5s infinite alternate;
+    }
+
+    @keyframes pulsar {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    /* ------------------------------------------- */
+    /* ANIMAÇÃO DE FUNDO (AZUL -> LARANJA -> AZUL) */
+    /* ------------------------------------------- */
+
+    @keyframes animacaoFundo {
+      0% {
+        background-color: #000000;
+      }
+
+      10% {
+        background-color: #001f3f;
+      }
+
+      50% {
+        background-color: #ff851b;
+      }
+
+      90% {
+        background-color: #001f3f;
+      }
+
+      100% {
+        background-color: #000000;
+      }
+    }
+
+    body.convite-ativo {
+      /* Ao invés de iniciar a animação, apenas garantimos que o fundo seja preto */
+      background-color: #000000 !important; /* Força o preto absoluto */
+      /* Removida a linha: animation: animacaoFundo 20s infinite alternate linear; */
+    }
+    /* ------------------------------------------- */
+    /* EFEITO DE REVELAÇÃO DO TEXTO (FADE-IN) */
+    /* ------------------------------------------- */
+
+    #telaConvite h2 {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      color: #000000;
+      transition: color 4s ease-in-out;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0);
+      text-align: center;
+    }
+
+    .info-boliche p {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      margin: 15px 0;
+      border-radius: 5px;
+      color: #000000;
+      transition: color 1.5s ease-in;
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .botao-rsvp {
+      opacity: 0;
+      color: #000000;
+      transition: opacity 2s ease-in, color 2s ease-in;
+      text-decoration: none;
+      padding: 15px 30px;
+      margin-top: 30px;
+      border: 2px solid #000000;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* NOVO: Estilo para a mensagem secreta */
+    #mensagemSecreta {
+        margin-top: 30px;
+        color: #000000; /* Inicialmente invisível */
+        transition: color 3s ease-out; /* Transição suave */
+        font-size: 1.2em;
+    }
+
+
+    /* Classes adicionadas por JS para iniciar a transição */
+    #telaConvite h2.revelado,
+    .info-boliche p.revelado,
+    .botao-rsvp.revelado,
+    #mensagemSecreta.revelado { /* Adicionado à classe revelado */
+      color: var(--cor-texto);
+      opacity: 1;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      border-color: var(--cor-texto);
+    }
+  </style>
+</head>
+
+<body>
+
+  <audio id="musicaFundo" loop>
+    <source src="CirculodeFogo.mp3" type="audio/mp3">
+  </audio>
+
+  <div id="telaInicial" class="tela ativo">
+    <h1>VOCÊ RECEBEU UM PRESENTE!</h1>
+    <div id="presente">
+    </div>
+    <p class="clique-aviso">Clique no presente para abrir!</p>
+  </div>
+
+  <div id="telaConvite" class="tela">
+    <h2 id="tituloConvite">VOCÊ FOI CONVIDADO PARA O ANIVERSÁRIO DE 16 ANOS DE UM DOS LORDES DA INFORMÁTICA DA GERAÇÃO
+      2025 DO IFMS</h2>
+
+    <div class="info-boliche">
+      <p class="topico" id="topico1"> Onde: [Nome e Endereço do Local do Boliche]</p>
+      <p class="topico" id="topico2"> Quando: [Data do Evento]</p>
+      <p class="topico" id="topico3"> Horário: [Hora de Início] às [Hora de Fim]</p>
+      <p class="topico" id="topico4" class="detalhe-especial">Vista-se com seu melhor estilo</p>
+    </div>
+
+    <a href="[Link do RSVP ou WhatsApp]" target="_blank" class="botao-rsvp" id="botaoRsvp">CONFIRMAR PRESENÇA (RSVP)</a>
+
+    <p id="mensagemSecreta">Conto com você!!</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Exibe o alerta de volume imediatamente
+      alert("ATENÇÃO: Aumente o volume! Você está prestes a receber uma transmissão codificada.");
+
+      const presente = document.getElementById('presente');
+      const telaInicial = document.getElementById('telaInicial');
+      const telaConvite = document.getElementById('telaConvite');
+      const tituloConvite = document.getElementById('tituloConvite');
+      const mensagemSecreta = document.getElementById('mensagemSecreta'); // NOVO: Elemento da mensagem secreta
+      const musica = document.getElementById('musicaFundo');
+      const body = document.body;
+
+      // Lista de todos os elementos que devem aparecer sequencialmente
+      const topicos = [
+        document.getElementById('topico1'),
+        document.getElementById('topico2'),
+        document.getElementById('topico3'),
+        document.getElementById('topico4'),
+        document.getElementById('botaoRsvp')
+      ];
+
+      presente.addEventListener('click', () => {
+        // 1. Toca a música.
+        musica.play().catch(error => {
+          console.error("Não foi possível tocar a música: ", error);
+        });
+
+        // 2. Esconde a tela inicial
+        telaInicial.style.display = 'none';
+
+        // 3. Mostra a tela do convite
+        telaConvite.style.display = 'flex';
+
+        // 4. Inicia a animação de fundo
+        body.classList.add('convite-ativo');
+
+        // 5. Inicia a sequência de revelação
+        const tempoTotalTitulo = 4000; // 4 segundos para o título desbotar
+        const tempoEntreTopicos = 800; // 0.8 segundos de atraso entre cada tópico
+        const delayMensagemSecreta = 24000; // 24 segundos exatos
+
+        // A. Revela o Título (inicia a transição de 4s)
+        setTimeout(() => {
+          tituloConvite.classList.add('revelado');
+        }, 50);
+
+        // B. Revela os Tópicos sequencialmente
+        topicos.forEach((elemento, index) => {
+          const delay = 100 + tempoTotalTitulo + (index * tempoEntreTopicos);
+          
+          setTimeout(() => {
+            elemento.classList.add('revelado');
+          }, delay);
+        });
+        
+        // C. NOVO: Revela a Mensagem Secreta após 24 segundos
+        setTimeout(() => {
+            mensagemSecreta.classList.add('revelado');
+        }, delayMensagemSecreta);
+
+      });
+    });
+  </script>
+</body>
+
+</html>
