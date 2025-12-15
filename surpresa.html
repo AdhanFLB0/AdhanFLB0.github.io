@@ -167,6 +167,67 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
       border-color: var(--cor-texto);
     }
+    /* ... (Seu CSS existente termina aqui) ... */
+    
+    /* ------------------------------------------- */
+    /* RESPONSIVIDADE (MEDIA QUERIES) */
+    /* ------------------------------------------- */
+    
+    @media (max-width: 600px) {
+        /* Reduz o tamanho da fonte para leitura confortável no celular */
+        body {
+            font-size: 10px; 
+        }
+
+        /* Reduz o tamanho do título na tela inicial */
+        #telaInicial h1 {
+            font-size: 1.5em; 
+            margin-bottom: 50px;
+        }
+
+        /* Reduz o presente para que caiba bem na tela */
+        #presente {
+            width: 120px;
+            height: 120px;
+            border: 8px solid #f0f0f0;
+        }
+
+        /* Reduz o tamanho do título principal do convite */
+        #telaConvite h2 {
+            font-size: 1.1em; /* Título longo, precisa ser menor */
+            padding: 0 10px;
+            margin-bottom: 25px;
+            line-height: 1.5; /* Melhora a quebra de linha */
+        }
+        
+        /* Ajusta o padding e max-width dos tópicos */
+        .info-boliche {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .info-boliche p {
+            font-size: 1.1em;
+            padding: 8px;
+            margin: 10px 0;
+            max-width: none; /* Permite ocupar a largura máxima do contêiner */
+            text-align: center; /* Centraliza as informações para o celular */
+        }
+        
+        /* Ajusta o tamanho e espaçamento do botão */
+        .botao-rsvp {
+            padding: 12px 20px;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        
+        /* Ajusta a mensagem secreta */
+        #mensagemSecreta {
+            font-size: 1em;
+            margin-top: 20px;
+        }
+    }
+    
   </style>
 </head>
 
@@ -177,15 +238,15 @@
   </audio>
 
   <div id="telaInicial" class="tela ativo">
-    <h1>VOCÊ RECEBEU UM PRESENTE!</h1>
+    <h1>RECEBES UM PRESENTE!</h1>
     <div id="presente">
     </div>
     <p class="clique-aviso">Clique no presente para abrir!</p>
   </div>
 
   <div id="telaConvite" class="tela">
-    <h2 id="tituloConvite">VOCÊ FOI CONVIDADO PARA O ANIVERSÁRIO DE 16 ANOS DE UM DOS LORDES DA INFORMÁTICA DA GERAÇÃO
-      2025 DO IFMS</h2>
+    <h2 id="tituloConvite">
+      VOCÊ FOI CONVIDADO PARA O ANIVERSÁRIO DE 16 ANO DE UM DOS LORDES DA INFORMÁTICA DA GERAÇÃO 2025 DO IFMS</h2>
 
     <div class="info-boliche">
       <p class="topico" id="topico1"> Onde: [Nome e Endereço do Local do Boliche]</p>
@@ -194,7 +255,7 @@
       <p class="topico" id="topico4" class="detalhe-especial">Vista-se com seu melhor estilo</p>
     </div>
 
-    <a href="https://api.whatsapp.com/send/?phone=5567998541443&text=confirme%20sua%20presen%C3%A7a&type=phone_number&app_absent=0" target="_blank" class="botao-rsvp" id="botaoRsvp">CONFIRMAR PRESENÇA (RSVP)</a>
+    <a href="https://api.whatsapp.com/send/?phone=5567998541443&text=Confirmo%20minha%20presen%C3%A7a&type=phone_number&app_absent=0" target="_blank" class="botao-rsvp" id="botaoRsvp">CONFIRMAR PRESENÇA (RSVP)</a>
 
     <p id="mensagemSecreta">Conto com você!!</p>
   </div>
