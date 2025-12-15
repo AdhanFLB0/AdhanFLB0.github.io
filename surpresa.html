@@ -81,36 +81,15 @@
     }
 
     /* ------------------------------------------- */
-    /* ANIMAÇÃO DE FUNDO (AZUL -> LARANJA -> AZUL) */
+    /* FUNDO PRETO FIXO APÓS REVELAÇÃO */
     /* ------------------------------------------- */
-
-    @keyframes animacaoFundo {
-      0% {
-        background-color: #000000;
-      }
-
-      10% {
-        background-color: #001f3f;
-      }
-
-      50% {
-        background-color: #ff851b;
-      }
-
-      90% {
-        background-color: #001f3f;
-      }
-
-      100% {
-        background-color: #000000;
-      }
-    }
 
     body.convite-ativo {
       /* Ao invés de iniciar a animação, apenas garantimos que o fundo seja preto */
       background-color: #000000 !important; /* Força o preto absoluto */
-      /* Removida a linha: animation: animacaoFundo 20s infinite alternate linear; */
+      animation: none; /* Desliga qualquer animação prévia que possa existir */
     }
+
     /* ------------------------------------------- */
     /* EFEITO DE REVELAÇÃO DO TEXTO (FADE-IN) */
     /* ------------------------------------------- */
@@ -130,7 +109,7 @@
       margin: 15px 0;
       border-radius: 5px;
       color: #000000;
-      transition: color 1.5s ease-in;
+      transition: color 4s ease-in; /* Aumentei o tempo de transição para o novo ritmo */
       width: 100%;
       max-width: 500px;
       text-align: left;
@@ -139,7 +118,7 @@
     .botao-rsvp {
       opacity: 0;
       color: #000000;
-      transition: opacity 2s ease-in, color 2s ease-in;
+      transition: opacity 4s ease-in, color 4s ease-in; /* Aumentei o tempo de transição */
       text-decoration: none;
       padding: 15px 30px;
       margin-top: 30px;
@@ -148,11 +127,11 @@
       cursor: pointer;
     }
     
-    /* NOVO: Estilo para a mensagem secreta */
+    /* Estilo para a mensagem secreta */
     #mensagemSecreta {
         margin-top: 30px;
         color: #000000; /* Inicialmente invisível */
-        transition: color 3s ease-out; /* Transição suave */
+        transition: color 4s ease-out; /* Aumentei o tempo de transição */
         font-size: 1.2em;
     }
 
@@ -161,14 +140,13 @@
     #telaConvite h2.revelado,
     .info-boliche p.revelado,
     .botao-rsvp.revelado,
-    #mensagemSecreta.revelado { /* Adicionado à classe revelado */
+    #mensagemSecreta.revelado {
       color: var(--cor-texto);
       opacity: 1;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
       border-color: var(--cor-texto);
     }
-    /* ... (Seu CSS existente termina aqui) ... */
-    
+
     /* ------------------------------------------- */
     /* RESPONSIVIDADE (MEDIA QUERIES) */
     /* ------------------------------------------- */
@@ -227,7 +205,6 @@
             margin-top: 20px;
         }
     }
-    
   </style>
 </head>
 
@@ -269,57 +246,51 @@
       const telaInicial = document.getElementById('telaInicial');
       const telaConvite = document.getElementById('telaConvite');
       const tituloConvite = document.getElementById('tituloConvite');
-      const mensagemSecreta = document.getElementById('mensagemSecreta'); // NOVO: Elemento da mensagem secreta
       const musica = document.getElementById('musicaFundo');
       const body = document.body;
 
-      // Lista de todos os elementos que devem aparecer sequencialmente
-      const topicos = [
+      // NOVO: Lista de TODOS os elementos sequenciais (4 tópicos + RSVP + Mensagem Secreta)
+      const topicosSequenciais = [
         document.getElementById('topico1'),
         document.getElementById('topico2'),
         document.getElementById('topico3'),
         document.getElementById('topico4'),
-        document.getElementById('botaoRsvp')
+        document.getElementById('botaoRsvp'),
+        document.getElementById('mensagemSecreta') 
       ];
 
       presente.addEventListener('click', () => {
-        // 1. Toca a música.
+        // 1. Toca a música. O cronômetro de 24s deve começar AQUI!
         musica.play().catch(error => {
           console.error("Não foi possível tocar a música: ", error);
         });
 
-        // 2. Esconde a tela inicial
+        // 2. Esconde a tela inicial e mostra a tela do convite
         telaInicial.style.display = 'none';
-
-        // 3. Mostra a tela do convite
         telaConvite.style.display = 'flex';
-
-        // 4. Inicia a animação de fundo
         body.classList.add('convite-ativo');
 
-        // 5. Inicia a sequência de revelação
-        const tempoTotalTitulo = 4000; // 4 segundos para o título desbotar
-        const tempoEntreTopicos = 800; // 0.8 segundos de atraso entre cada tópico
-        const delayMensagemSecreta = 24000; // 24 segundos exatos
-
+        // 3. NOVO TIMING: Título + 6 elementos com 4s de intervalo.
+        
         // A. Revela o Título (inicia a transição de 4s)
         setTimeout(() => {
           tituloConvite.classList.add('revelado');
         }, 50);
 
-        // B. Revela os Tópicos sequencialmente
-        topicos.forEach((elemento, index) => {
-          const delay = 100 + tempoTotalTitulo + (index * tempoEntreTopicos);
+        // B. Define o timing para a sequência
+        const tempoAtrasoInicial = 4000; // Tempo de espera para o título terminar (4s)
+        const tempoEntreElementos = 4000; // 4 segundos entre cada elemento para totalizar 24s no último
+
+        // C. Revela os 6 elementos sequencialmente
+        topicosSequenciais.forEach((elemento, index) => {
+          // Cálculo: 4s iniciais + (índice * 4s de intervalo)
+          // Índice 5 (Mensagem Secreta) aparecerá em: 4s + (5 * 4s) = 24s.
+          const delay = tempoAtrasoInicial + (index * tempoEntreElementos); 
           
           setTimeout(() => {
             elemento.classList.add('revelado');
           }, delay);
         });
-        
-        // C. NOVO: Revela a Mensagem Secreta após 24 segundos
-        setTimeout(() => {
-            mensagemSecreta.classList.add('revelado');
-        }, delayMensagemSecreta);
 
       });
     });
