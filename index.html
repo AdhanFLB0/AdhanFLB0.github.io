@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Início: Coração e Contador --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Coração Neon Grande */
+        .heart {
+            position: relative;
+            width: 200px; 
+            height: 180px;
+            animation: pulse 1.5s infinite, changeColor 8s infinite ease-in-out;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 100px;
+            height: 160px;
+            background: currentColor;
+            border-radius: 100px 100px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            filter: drop-shadow(0 0 30px currentColor);
+        }
+
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        /* Iniciais A+L */
+        .initials {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: white;
+            z-index: 10;
+            margin-top: -20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes changeColor {
+            0% { color: #ff0000; }
+            25% { color: #ff0077; }
+            50% { color: #9d00ff; }
+            75% { color: #00d4ff; }
+            100% { color: #ff0000; }
+        }
+
+        .title {
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        #timer {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- Carrossel 3D --- */
+        .carousel-section {
+            padding: 100px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            perspective: 1200px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 300px;
+            height: 450px;
+            transform-style: preserve-3d;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 300px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+            opacity: 0;
+            filter: brightness(0.3);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 10;
+            transform: translateX(0) scale(1.1);
+            filter: brightness(1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-slide.prev {
+            opacity: 0.4;
+            z-index: 5;
+            transform: translateX(-280px) scale(0.85) rotateY(30deg);
+        }
+
+        .carousel-slide.next {
+            opacity: 0.4;
+            z-index: 5;
+            transform: translateX(280px) scale(0.85) rotateY(-30deg);
+        }
+
+        .nav-btn {
+            position: absolute;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.3s;
+        }
+
+        .btn-left { left: 10%; }
+        .btn-right { right: 10%; }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.3); }
+
+        @media (max-width: 768px) {
+            .carousel-slide.prev { transform: translateX(-140px) scale(0.7) rotateY(25deg); }
+            .carousel-slide.next { transform: translateX(140px) scale(0.7) rotateY(-25deg); }
+            .btn-left { left: 5%; }
+            .btn-right { right: 5%; }
+            #timer { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="heart">
+            <span class="initials">A+L</span>
+        </div>
+        <h2 class="title">Nosso tempo juntos:</h2>
+        <div id="timer">Calculando...</div>
+    </section>
+
+    <section class="carousel-section">
+        <h2 class="title">Nossa Galeria</h2>
+        <div class="carousel-wrapper">
+            <button class="nav-btn btn-left" onclick="changeSlide(-1)">&#10094;</button>
+            <div class="carousel-container">
+                <img class="carousel-slide" src="https://picsum.photos/400/600?random=1">
+                <img class="carousel-slide" src="https://picsum.photos/400/600?random=2">
+                <img class="carousel-slide" src="https://picsum.photos/400/600?random=3">
+                <img class="carousel-slide" src="https://picsum.photos/400/600?random=4">
+                <img class="carousel-slide" src="https://picsum.photos/400/600?random=5">
+            </div>
+            <button class="nav-btn btn-right" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        // --- Contador Inteligente ---
+        // Data alvo: 23/12/2025 às 19:00
+        const startDate = new Date("2025-12-23T19:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = now - startDate;
+
+            if (diff < 0) {
+                document.getElementById("timer").innerHTML = "O nosso momento está chegando...";
+                return;
+            }
+
+            const yr = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+            const mo = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+            const d = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            function show(val, sing, plur) {
+                return val > 0 ? `${val}${val==1?sing:plur} ` : "";
+            }
+
+            // Esconde Anos, Meses e Dias se forem 0
+            let str = show(yr, " ano,", " anos,") + show(mo, " mês,", " meses,") + show(d, " dia,", " dias,");
+            // Horas, Minutos e Segundos sempre aparecem
+            str += `${h}h ${m}m ${s}s`;
+            
+            document.getElementById("timer").innerHTML = str;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // --- Carrossel 3D ---
+        let currentIdx = 0;
+        const slides = document.querySelectorAll(".carousel-slide");
+
+        function updateCarousel() {
+            slides.forEach((s, i) => {
+                s.classList.remove("active", "prev", "next");
+                if (i === currentIdx) s.classList.add("active");
+                else if (i === (currentIdx - 1 + slides.length) % slides.length) s.classList.add("prev");
+                else if (i === (currentIdx + 1) % slides.length) s.classList.add("next");
+            });
+        }
+
+        function changeSlide(dir) {
+            currentIdx = (currentIdx + dir + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        updateCarousel();
+    </script>
+</body>
+</html>
