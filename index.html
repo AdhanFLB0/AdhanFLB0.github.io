@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Amor</title>
+    <title>A & L - Nosso Amor</title>
     <style>
-        /* Estilos Gerais */
+        /* Estilos Gerais (Mantidos) */
         body {
             margin: 0;
             padding: 0;
@@ -31,10 +32,9 @@
             padding: 20px;
         }
 
-        /* Coração Neon Grande */
         .heart {
             position: relative;
-            width: 200px; 
+            width: 200px;
             height: 180px;
             animation: pulse 1.5s infinite, changeColor 8s infinite ease-in-out;
             margin-bottom: 60px;
@@ -43,7 +43,8 @@
             align-items: center;
         }
 
-        .heart:before, .heart:after {
+        .heart:before,
+        .heart:after {
             content: "";
             position: absolute;
             left: 100px;
@@ -63,14 +64,13 @@
             transform-origin: 100% 100%;
         }
 
-        /* Iniciais A+L */
         .initials {
             font-size: 2.8rem;
             font-weight: bold;
             color: white;
             z-index: 10;
             margin-top: -20px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
             letter-spacing: 2px;
         }
 
@@ -105,7 +105,6 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         /* --- Carrossel 3D --- */
@@ -142,7 +141,7 @@
             object-fit: cover;
             border-radius: 20px;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
             opacity: 0;
             filter: brightness(0.3);
         }
@@ -185,23 +184,198 @@
 
         .btn-left { left: 10%; }
         .btn-right { right: 10%; }
+
         .nav-btn:hover { background: rgba(255, 255, 255, 0.3); }
 
+        .surprise-btn {
+            margin-top: 50px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: transparent;
+            color: #ff0077;
+            border: 2px solid #ff0077;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 0, 119, 0.3);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .surprise-btn:hover {
+            background: #ff0077;
+            color: white;
+            box-shadow: 0 0 30px #ff0077;
+        }
+
+        /* --- Overlay da Pokébola --- */
+        #pokemon-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.8s;
+            padding: 50px 20px;
+            overflow-y: auto;
+        }
+
+        /* Botão de Voltar */
+        #back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 300;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none; /* Só aparece quando a pokebola abre */
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        #back-btn:hover { background: rgba(255, 255, 255, 0.3); }
+
+        #poke-text {
+            font-size: 2.2rem;
+            margin-bottom: 170px;
+            margin-top: 50px;
+            opacity: 0;
+            transition: 1s;
+            color: #ff0000;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+            font-weight: bold;
+            z-index: 210;
+            text-align: center;
+        }
+
+        .pokeball {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            min-width: 220px;
+            min-height: 220px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: 50%;
+            border: 10px solid #222;
+            cursor: pointer;
+            transition: transform 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .poke-top {
+            position: absolute;
+            top: -10px;
+            width: calc(100% + 20px);
+            height: 50%;
+            background: #ff0000;
+            border-bottom: 6px solid #222;
+            border-top: 10px solid #222;
+            border-left: 10px solid #222;
+            border-right: 10px solid #222;
+            border-radius: 120px 120px 0 0;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 20;
+            left: -10px;
+        }
+
+        .poke-bottom {
+            position: absolute;
+            bottom: -10px;
+            width: calc(100% + 20px);
+            height: 50%;
+            background: white;
+            border-top: 6px solid #222;
+            border-bottom: 10px solid #222;
+            border-left: 10px solid #222;
+            border-right: 10px solid #222;
+            border-radius: 0 0 120px 120px;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 20;
+            left: -10px;
+        }
+
+        .poke-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 10px solid #222;
+            border-radius: 50%;
+            z-index: 30;
+            transition: opacity 0.5s;
+        }
+
+        .pokeball.open .poke-top { transform: translateY(-130px); cursor: pointer; }
+        .pokeball.open .poke-bottom { transform: translateY(130px); }
+        .pokeball.open .poke-center { opacity: 0; pointer-events: none; }
+
+        #content-inside {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: 1s;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .pokeball.open #content-inside { pointer-events: auto; }
+
+        #ring-img {
+            font-size: 70px;
+            cursor: pointer;
+            filter: drop-shadow(0 0 20px gold);
+        }
+
+        #final-msg {
+            margin-top: 150px;
+            font-size: 1.3rem;
+            color: #fff;
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0;
+            transition: 2s;
+            text-align: center;
+            font-style: italic;
+            z-index: 210;
+            padding-bottom: 100px;
+        }
+
         @media (max-width: 768px) {
-            .carousel-slide.prev { transform: translateX(-140px) scale(0.7) rotateY(25deg); }
-            .carousel-slide.next { transform: translateX(140px) scale(0.7) rotateY(-25deg); }
-            .btn-left { left: 5%; }
-            .btn-right { right: 5%; }
             #timer { font-size: 1.3rem; }
+            #poke-text { font-size: 1.8rem; }
         }
     </style>
 </head>
+
 <body>
+    <audio id="love-song">
+        <source src="careless-whisper-4.mp3" type="audio/mpeg">
+    </audio>
 
     <section class="hero">
-        <div class="heart">
-            <span class="initials">A+L</span>
-        </div>
+        <div class="heart"><span class="initials">A+L</span></div>
         <h2 class="title">Nosso tempo juntos:</h2>
         <div id="timer">Calculando...</div>
     </section>
@@ -214,53 +388,62 @@
                 <img class="carousel-slide" src="https://picsum.photos/400/600?random=1">
                 <img class="carousel-slide" src="https://picsum.photos/400/600?random=2">
                 <img class="carousel-slide" src="https://picsum.photos/400/600?random=3">
-                <img class="carousel-slide" src="https://picsum.photos/400/600?random=4">
-                <img class="carousel-slide" src="https://picsum.photos/400/600?random=5">
             </div>
             <button class="nav-btn btn-right" onclick="changeSlide(1)">&#10095;</button>
         </div>
+        <button class="surprise-btn" onclick="openSurprise()">Clique para uma surpresa</button>
     </section>
 
-    <script>
-        // --- Contador Inteligente ---
-        // Data alvo: 23/12/2025 às 19:00
-        const startDate = new Date("2025-12-23T19:00:00").getTime();
+    <div id="pokemon-overlay">
+        <button id="back-btn" onclick="closeSurprise()">← Voltar</button>
 
+        <div id="poke-text">Eu escolho você!</div>
+
+        <div class="pokeball" id="main-poke" onclick="triggerPokeball()">
+            <div id="content-inside">
+                <span id="ring-img" onclick="showFinalMsg(event)">💍</span>
+            </div>
+            <div class="poke-top" onclick="closePokeball(event)"></div>
+            <div class="poke-bottom"></div>
+            <div class="poke-center"></div>
+        </div>
+
+        <div id="final-msg">
+            "Você foi sempre a salvação, <br>
+            não sei por que nunca percebi antes, <br>
+            vc me salvou, de anos de solidão, anos de segurar vela,<br>
+            anos de chorar noites sem ninguém,<br>
+            sem ninguém dizer ao menos um eu te amo uma vez...<br>
+            Você foi, é, e sempre será a luz que iluminou meu céu na noite mais sombria que minha vida se
+            encontrava,<br>
+            mesmo quando eu me escondia atrás de sorrisos, brincadeiras ou até mesmo códigos,<br>
+            eu estava quebrado, mas você foi a cola que me consertou, me limpou, e me salvou.<br>
+            Obrigado amor"<br><br>
+            <strong>"Feliz Segunda semana de Namoro"</strong>
+        </div>
+    </div>
+
+    <script>
+        // --- Contador (Mantido) ---
+        const startDate = new Date("2025-12-23T19:00:00").getTime();
         function updateTimer() {
             const now = new Date().getTime();
             const diff = now - startDate;
-
-            if (diff < 0) {
-                document.getElementById("timer").innerHTML = "O nosso momento está chegando...";
-                return;
-            }
-
+            if (diff < 0) { document.getElementById("timer").innerHTML = "O nosso momento está chegando..."; return; }
             const yr = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
             const mo = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
             const d = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-            function show(val, sing, plur) {
-                return val > 0 ? `${val}${val==1?sing:plur} ` : "";
-            }
-
-            // Esconde Anos, Meses e Dias se forem 0
-            let str = show(yr, " ano,", " anos,") + show(mo, " mês,", " meses,") + show(d, " dia,", " dias,");
-            // Horas, Minutos e Segundos sempre aparecem
-            str += `${h}h ${m}m ${s}s`;
-            
-            document.getElementById("timer").innerHTML = str;
+            function show(v, s, p) { return v > 0 ? `${v}${v == 1 ? s : p} ` : ""; }
+            document.getElementById("timer").innerHTML = show(yr, " ano,", " anos,") + show(mo, " mês,", " meses,") + show(d, " dia,", " dias,") + `${h}h ${m}m ${s}s`;
         }
+        setInterval(updateTimer, 1000); updateTimer();
 
-        setInterval(updateTimer, 1000);
-        updateTimer();
-
-        // --- Carrossel 3D ---
+        // --- Carrossel (Mantido) ---
         let currentIdx = 0;
         const slides = document.querySelectorAll(".carousel-slide");
-
         function updateCarousel() {
             slides.forEach((s, i) => {
                 s.classList.remove("active", "prev", "next");
@@ -269,13 +452,68 @@
                 else if (i === (currentIdx + 1) % slides.length) s.classList.add("next");
             });
         }
+        function changeSlide(dir) { currentIdx = (currentIdx + dir + slides.length) % slides.length; updateCarousel(); }
+        updateCarousel();
 
-        function changeSlide(dir) {
-            currentIdx = (currentIdx + dir + slides.length) % slides.length;
-            updateCarousel();
+        // --- Lógica da Surpresa ---
+        function openSurprise() {
+            const overlay = document.getElementById('pokemon-overlay');
+            overlay.style.display = 'flex';
+            setTimeout(() => overlay.style.opacity = '1', 10);
+            document.body.style.overflow = 'hidden';
         }
 
-        updateCarousel();
+        function triggerPokeball() {
+            const poke = document.getElementById('main-poke');
+            if (!poke.classList.contains('open')) {
+                poke.classList.add('open');
+                setTimeout(() => {
+                    document.getElementById('poke-text').style.opacity = '1';
+                    document.getElementById('content-inside').style.opacity = '1';
+                    document.getElementById('back-btn').style.display = 'block'; // Mostra botão voltar
+                    alert("Aumente o volume 🔊");
+                }, 600);
+            }
+        }
+
+        // Função para fechar a pokébola ao clicar na parte vermelha
+        function closePokeball(event) {
+            const poke = document.getElementById('main-poke');
+            if (poke.classList.contains('open')) {
+                event.stopPropagation(); // Evita reabrir imediatamente
+                poke.classList.remove('open');
+                document.getElementById('poke-text').style.opacity = '0';
+                document.getElementById('content-inside').style.opacity = '0';
+                document.getElementById('final-msg').style.opacity = '0';
+            }
+        }
+
+        // Função para voltar ao site original
+        function closeSurprise() {
+            const overlay = document.getElementById('pokemon-overlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                // Reseta os estados internos para a próxima vez que abrir
+                document.getElementById('main-poke').classList.remove('open');
+                document.getElementById('poke-text').style.opacity = '0';
+                document.getElementById('content-inside').style.opacity = '0';
+                document.getElementById('final-msg').style.opacity = '0';
+                document.getElementById('back-btn').style.display = 'none';
+                // Para a música se estiver tocando
+                const audio = document.getElementById('love-song');
+                audio.pause();
+                audio.currentTime = 0;
+            }, 800);
+            document.body.style.overflow = 'auto';
+        }
+
+        function showFinalMsg(event) {
+            event.stopPropagation();
+            const audio = document.getElementById('love-song');
+            audio.play().catch(e => console.log("Erro ao tocar áudio:", e));
+            document.getElementById('final-msg').style.opacity = '1';
+        }
     </script>
 </body>
 </html>
