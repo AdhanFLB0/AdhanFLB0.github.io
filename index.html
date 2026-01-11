@@ -75,17 +75,39 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @keyframes changeColor {
-            0% { color: #ff0000; }
-            25% { color: #ff0077; }
-            50% { color: #9d00ff; }
-            75% { color: #00d4ff; }
-            100% { color: #ff0000; }
+            0% {
+                color: #ff0000;
+            }
+
+            25% {
+                color: #ff0077;
+            }
+
+            50% {
+                color: #9d00ff;
+            }
+
+            75% {
+                color: #00d4ff;
+            }
+
+            100% {
+                color: #ff0000;
+            }
         }
 
         .title {
@@ -182,10 +204,17 @@
             transition: 0.3s;
         }
 
-        .btn-left { left: 10%; }
-        .btn-right { right: 10%; }
+        .btn-left {
+            left: 10%;
+        }
 
-        .nav-btn:hover { background: rgba(255, 255, 255, 0.3); }
+        .btn-right {
+            right: 10%;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
 
         .surprise-btn {
             margin-top: 50px;
@@ -239,11 +268,15 @@
             padding: 10px 20px;
             border-radius: 10px;
             cursor: pointer;
-            display: none; /* Só aparece quando a pokebola abre */
+            display: none;
+            /* Só aparece quando a pokebola abre */
             backdrop-filter: blur(5px);
             transition: 0.3s;
         }
-        #back-btn:hover { background: rgba(255, 255, 255, 0.3); }
+
+        #back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
 
         #poke-text {
             font-size: 2.2rem;
@@ -322,9 +355,19 @@
             transition: opacity 0.5s;
         }
 
-        .pokeball.open .poke-top { transform: translateY(-130px); cursor: pointer; }
-        .pokeball.open .poke-bottom { transform: translateY(130px); }
-        .pokeball.open .poke-center { opacity: 0; pointer-events: none; }
+        .pokeball.open .poke-top {
+            transform: translateY(-130px);
+            cursor: pointer;
+        }
+
+        .pokeball.open .poke-bottom {
+            transform: translateY(130px);
+        }
+
+        .pokeball.open .poke-center {
+            opacity: 0;
+            pointer-events: none;
+        }
 
         #content-inside {
             position: absolute;
@@ -340,7 +383,9 @@
             pointer-events: none;
         }
 
-        .pokeball.open #content-inside { pointer-events: auto; }
+        .pokeball.open #content-inside {
+            pointer-events: auto;
+        }
 
         #ring-img {
             font-size: 70px;
@@ -363,8 +408,39 @@
         }
 
         @media (max-width: 768px) {
-            #timer { font-size: 1.3rem; }
-            #poke-text { font-size: 1.8rem; }
+            #timer {
+                font-size: 1.3rem;
+            }
+
+            #poke-text {
+                font-size: 1.8rem;
+            }
+        }
+
+        .multiverse-btn {
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            background: transparent;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-decoration: none;
+            /* Caso use como <a> */
+            display: inline-block;
+        }
+
+        .multiverse-btn:hover {
+            background: #d4af37;
+            color: #050505;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -378,6 +454,7 @@
         <div class="heart"><span class="initials">A+L</span></div>
         <h2 class="title">Nosso tempo juntos:</h2>
         <div id="timer">Calculando...</div>
+        <a href="https://adhanflb0.github.io/paradoxo.html" class="multiverse-btn">Explore os universos que estamos juntos</a>
     </section>
 
     <section class="carousel-section">
@@ -398,7 +475,7 @@
         <button id="back-btn" onclick="closeSurprise()">← Voltar</button>
 
         <div id="poke-text">Eu escolho você! <br>
-        "Aperte no Anel"
+            "Aperte no Anel"
         </div>
 
         <div class="pokeball" id="main-poke" onclick="triggerPokeball()">
@@ -518,4 +595,5 @@
         }
     </script>
 </body>
+
 </html>
