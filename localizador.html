@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Paradoxo - Multiverso A-Z</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .lines-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            box-shadow: 0 0 8px #d4af37;
+            margin: 3px 0;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.7rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #d4af37;
+            padding: 12px;
+            color: white;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        button {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.4s;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            box-shadow: 0 0 20px #d4af37;
+            background: #fff;
+        }
+
+        #portal-output {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid #d4af37;
+            display: none;
+            animation: openPortal 0.8s ease-out forwards;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        @keyframes openPortal {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .u-scenario {
+            color: #88c0d0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .u-title {
+            color: #d4af37;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .u-text {
+            line-height: 1.7;
+            font-style: italic;
+            color: #e5e9f0;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .u-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        .lines-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            /* Aumenta o espaço entre as linhas */
+            margin: 40px 0;
+        }
+
+        /* A Linha Dourada Neon Animada */
+        .line {
+            height: 5px;
+            width: 80%;
+            /* Gradiente que vai do preto para o dourado e volta pro preto */
+            background: linear-gradient(90deg,
+                    rgba(0, 0, 0, 1) 0%,
+                    rgba(212, 175, 55, 1) 50%,
+                    rgba(0, 0, 0, 1) 100%);
+            background-size: 200% 100%;
+            /* Aumenta o tamanho para podermos animar o deslocamento */
+
+            /* Efeito Neon */
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+
+            /* Animação que faz o gradiente "correr" */
+            animation: timeFlow 4s linear infinite;
+            position: relative;
+        }
+
+        /* Segunda linha com tempo diferente para parecer caos temporal */
+        .line:nth-child(2) {
+            width: 60%;
+            animation: timeFlow 6s linear infinite reverse;
+            opacity: 0.7;
+        }
+
+        /* Terceira linha */
+        .line:nth-child(3) {
+            width: 40%;
+            animation: timeFlow 3s linear infinite;
+            opacity: 0.4;
+        }
+
+        /* Animação do fluxo temporal */
+        @keyframes timeFlow {
+            0% {
+                background-position: 200% 0%;
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+            }
+
+            100% {
+                background-position: -200% 0%;
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Bem-vinda ao Paradoxo</h1>
+        <p style="opacity: 0.6; font-size: 0.9rem;">Sintonizando nossa história em outras realidades</p>
+    </div>
+
+    <div class="lines-container">
+        <div class="line"></div>
+    </div>
+
+    <div class="search-box">
+        <div class="input-group">
+            <label>Coordenada de Origem (A - Z)</label>
+            <input type="text" id="letter" maxlength="1" placeholder="Letra">
+        </div>
+        <div class="input-group">
+            <label>Frequência Variante (1 - 10)</label>
+            <input type="number" id="number" min="1" max="10" placeholder="Nº">
+        </div>
+        <button onclick="viajar()">Acessar Universo</button>
+    </div>
+
+    <div id="portal-output">
+        <div class="u-scenario" id="u-cat"></div>
+        <div class="u-title" id="u-name"></div>
+        <div class="u-text" id="u-desc"></div>
+    </div>
+
+    <script>
+        const categorias = {
+            'A': 'Animes', 'B': 'Batalhas', 'C': 'Ciborgues', 'D': 'Desenhos', 'E': 'Espacial', 'F': 'Fantasia',
+            'G': 'Games', 'H': 'Heróis', 'I': 'Invasões', 'J': 'Jornadas', 'K': 'Kaijus', 'L': 'Lendas',
+            'M': 'Mitologia', 'N': 'Ninja', 'O': 'Oculto', 'P': 'Piratas', 'Q': 'Quântico', 'R': 'Robôs',
+            'S': 'Sobrenatural', 'T': 'Tecnologia', 'U': 'Universo Alternativo', 'V': 'Vilões', 'W': 'Weird',
+            'X': 'Xeno', 'Y': 'Yokai', 'Z': 'Zumbis'
+        };
+
+        const multiverso = {
+            'A': ["Naruto", "Demon Slayer", "Tokyo Ghoul", "One Punch Man", "Dragon Ball Z", "Death Note", "Jujutsu Kaisen", "Erased", "Your Lie in April", "Attack on Titan"],
+            'B': ["Gladiador", "WWE", "Baki", "Kung Fu Panda", "God of War", "Naruto Shippuden", "Dragon Ball Super", "Mortal Kombat", "Vinland Saga", "Senhor dos Anéis"],
+            'C': ["Robocop", "Cyborg (DC)", "Ghost in the Shell", "Inspector Gadget", "Alita", "Ex Machina", "Genos (OPM)", "Detroit: Become Human", "Astro Boy", "Cyberpunk 2077"],
+            'D': ["Tom & Jerry", "Bob Esponja", "Coragem", "Gumball", "Ben 10", "Scooby-Doo", "Jovens Titãs", "Gravity Falls", "Steven Universe", "Avatar"],
+            'E': ["Star Wars", "Guardiões da Galáxia", "Alien", "Rick and Morty", "Star Trek", "Interestelar", "Ben 10 (Aliens)", "The Expanse", "WALL-E", "Duna"],
+            'F': ["Crônicas de Nárnia", "Harry Potter", "Dark Crystal", "Shrek", "The Witcher", "Overlord", "Fairy Tail", "Made in Abyss", "Viagem de Chihiro", "Senhor dos Anéis"],
+            'G': ["Super Mario", "Minecraft", "Dark Souls", "Fall Guys", "God of War", "League of Legends", "Pokémon", "FNAF", "Life is Strange", "Zelda"],
+            'H': ["Superman", "Homem-Aranha", "Batman", "Deadpool", "Vingadores", "Watchmen", "X-Men", "Constantine", "Logan", "Liga da Justiça"],
+            'I': ["Guerra dos Mundos", "Independence Day", "The Last of Us", "Meu Malvado Favorito", "Transformers", "Invasão Zumbi", "Pacific Rim", "A Chegada", "Um Lugar Silencioso", "Attack on Titan"],
+            'J': ["Dragon Quest", "One Piece", "Berserk", "Hora de Aventura", "Pokémon", "Hunter x Hunter", "JoJo", "Made in Abyss", "Up", "Senhor dos Anéis"],
+            'K': ["Godzilla", "King Kong", "Cloverfield", "Monstros S.A.", "Pacific Rim", "Ultraman", "Titãs", "Evangelion", "Godzilla Minus One", "Godzilla vs Kong"],
+            'L': ["Rei Arthur", "Robin Hood", "Cavaleiro Sem Cabeça", "Mulan", "Hércules", "Beowulf", "Percy Jackson", "Korra", "Moana", "Senhor dos Anéis"],
+            'M': ["Mitologia Grega", "Mitologia Nórdica", "Hades", "Hércules (Disney)", "God of War", "Record of Ragnarok", "Cavaleiros do Zodíaco", "Percy Jackson", "Sangue de Zeus", "Ragnarok"],
+            'N': ["Naruto Clássico", "Naruto Shippuden", "Basilisk", "Lego Ninjago", "Ninja Gaiden", "Akame ga Kill", "Naruto Sábio", "Sekiro", "Demon Slayer", "Guerra Ninja"],
+            'O': ["Scooby-Doo", "Sabrina", "Hellboy", "Beetlejuice", "Constantine", "Supernatural", "Jujutsu Kaisen", "Gravity Falls", "Noiva Cadáver", "Doutor Estranho"],
+            'P': ["Peter Pan", "One Piece", "Piratas do Caribe", "Capitão Gancho", "Sea of Thieves", "Black Sails", "Sinbad", "Treasure Planet", "One Piece (Drama)", "One Piece (Guerra)"],
+            'Q': ["De Volta para o Futuro", "Homem-Formiga", "Dark", "Rick and Morty", "Tenet", "Steins;Gate", "Doutor Estranho", "Donnie Darko", "Interestelar", "Everything Everywhere"],
+            'R': ["Astro Boy", "Wall-E", "Exterminador", "Baymax", "Transformers", "Detroit: Become Human", "Mega Man", "Gigantes de Aço", "Chappie", "Evangelion"],
+            'S': ["Gasparzinho", "Buffy", "The Walking Dead", "Beetlejuice", "Supernatural", "Bleach", "Jujutsu Kaisen", "Stranger Things", "A Silent Voice", "Demon Slayer"],
+            'T': ["Tron", "Matrix", "Black Mirror", "Big Hero 6", "Iron Man", "Ready Player One", "Cyberpunk", "Detroit", "Wall-E", "Ghost in the Shell"],
+            'U': ["Alice", "Aranhaverso", "Rick and Morty", "Coraline", "Stranger Things", "The Flash", "Doutor Estranho", "Dark", "Everything Everywhere", "Multiverso Marvel"],
+            'V': ["Coringa", "Thanos", "Kira", "Megamente", "Loki", "Light Yagami", "Venom", "Homelander", "Scar", "Darkseid"],
+            'W': ["Alice", "Hora de Aventura", "Donnie Darko", "Gumball", "Beetlejuice", "Rick and Morty", "Coragem", "Coraline", "Viagem de Chihiro", "Everything Everywhere"],
+            'X': ["E.T.", "MIB", "Alien", "Lilo & Stitch", "Predador", "Ben 10", "Dragon Ball", "A Chegada", "Guardiões da Galáxia", "Duna"],
+            'Y': ["Viagem de Chihiro", "Natsume Yuujinchou", "Demon Slayer", "Jujutsu Kaisen", "Inuyasha", "Noragami", "Spirited Away", "Mononoke", "Kamisama Kiss", "Princess Mononoke"],
+            'Z': ["Noite dos Mortos-Vivos", "Zumbilândia", "The Walking Dead", "Hotel Transilvânia", "Resident Evil", "Guerra Mundial Z", "The Last of Us", "Kingdom", "Invasão Zumbi", "Apocalipse Total"]
+        };
+
+        const mensagens = {
+            'A': "Mesmo com estilos diferentes e histórias longas, em cada traço desse anime, eu escolheria lutar ao seu lado.",
+            'B': "Em meio a guerras e duelos épicos, você é a única vitória que realmente importa para mim.",
+            'C': "Mesmo que fôssemos parte máquina, meu coração por você sempre seria 100% humano e real.",
+            'D': "Nossa vida pode parecer um desenho divertido, mas o que eu sinto por você é a parte mais real de mim.",
+            'E': "Em qualquer galáxia ou planeta distante, minha gravidade sempre me puxaria para perto de você.",
+            'F': "Nenhum dragão ou reino mágico é mais encantador do que o mundo que construímos juntos.",
+            'G': "Você é o meu 'Player 2' favorito. Com você, eu topo qualquer desafio e nunca dou Game Over.",
+            'H': "Eu não preciso de superpoderes para te proteger, você é a minha missão favorita de todos os dias.",
+            'I': "O mundo pode estar sendo invadido por forças externas, mas meu amor por você é uma fortaleza inabalável.",
+            'J': "A jornada é longa e cheia de aventuras, mas cada passo vale a pena porque você está segurando minha mão.",
+            'K': "Perto do tamanho do meu amor por você, até o maior dos Kaijus pareceria pequeno.",
+            'L': "Nossa história ainda vai se tornar uma lenda, contada por gerações como o amor mais puro que existiu.",
+            'M': "Nem os deuses mais poderosos da mitologia têm uma conexão tão forte quanto a nossa.",
+            'N': "Eu seguiria o meu 'jeito ninja' de nunca desistir de nós, protegendo nosso laço nas sombras ou na luz.",
+            'O': "Existem mistérios que o mundo não explica, mas a magia de estarmos juntos é a resposta para tudo.",
+            'P': "Navegaríamos por sete mares atrás de tesouros, mas eu já encontrei minha maior riqueza em você.",
+            'Q': "Em qualquer dimensão paralela ou realidade alternativa, eu sempre daria um jeito de te encontrar.",
+            'R': "Mesmo em um mundo dominado pela lógica das máquinas, nosso amor é a falha perfeita no sistema.",
+            'S': "Fenômenos inexplicáveis acontecem o tempo todo, mas o maior deles foi o destino ter nos unido.",
+            'T': "Nenhuma tecnologia avançada ou cidade futurista brilha tanto quanto o seu sorriso.",
+            'U': "Se tudo fosse diferente e as leis fossem outras, eu ainda seria perdidamente apaixonado por você.",
+            'V': "Podem nos chamar de vilões se quiserem, contanto que o nosso plano final seja ficarmos juntos para sempre.",
+            'W': "O mundo pode ser bizarro e sem lógica, mas com você ao lado, tudo finalmente faz sentido.",
+            'X': "Podemos ser de espécies diferentes ou mundos distantes, mas nossa linguagem é universal: o amor.",
+            'Y': "Entre espíritos e folclores, você é o ser mais iluminado que já cruzou o meu caminho.",
+            'Z': "Se o mundo acabasse hoje em um apocalipse, eu passaria cada segundo cuidando de você e sobrevivendo por nós."
+        };
+
+        function viajar() {
+            const l = document.getElementById('letter').value.toUpperCase();
+            const n = parseInt(document.getElementById('number').value);
+            const out = document.getElementById('portal-output');
+
+            if (multiverso[l] && n >= 1 && n <= 10) {
+                const nomeUniverso = multiverso[l][n - 1];
+                document.getElementById('u-cat').innerText = "Coordenada: " + categorias[l];
+                document.getElementById('u-name').innerText = "🌌 " + nomeUniverso;
+                document.getElementById('u-desc').innerText = `"${mensagens[l]}" \n\n Neste universo, estamos vivendo a aventura de ${nomeUniverso}, mas sempre um cuidando do outro.`;
+
+                out.style.display = 'block';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } else {
+                alert("Coordenadas inválidas! Digite uma letra de A-Z e um número de 1-10.");
+                out.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
