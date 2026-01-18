@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minha Resposta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050505;
+            color: #FFFFFF;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            background-color: #000000;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            text-align: center;
+            border-bottom: 1px solid #d4af37;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4af37;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .response-text {
+            margin-top: 40px;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Estilização do Carrossel */
+        .carousel-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transition: 0.5s;
+        }
+
+        .carousel-item.active img {
+            filter: brightness(0.8);
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            bottom: 40px;
+        }
+
+        .carousel-caption h5 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .carousel-caption p {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .back-btn {
+            margin-top: 40px;
+            padding: 10px 25px;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin-bottom: 50px;
+        }
+
+        .back-btn:hover {
+            background: #d4af37;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <p class="question">O que você faria pela sua namorada?</p>
+            <h1 class="main-title">A Resposta Definitiva</h1>
+        </div>
+    </header>
+
+    <h1 class="response-text">Eu responderia:</h1>
+
+    <div class="carousel-container">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                
+                <div class="carousel-item active">
+                    <img src="https://tm.ibxk.com.br/2022/05/13/13145731148273.jpg?ims=1000x400/filters:quality(80)" class="d-block w-100" alt="Vegeta">
+                    <div class="carousel-caption">
+                        <h5>Vegeta</h5>
+                        <p>"Desafiaria o próprio Deus da Destruição apenas por que ele tocou em você."</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9kQ4seJydwdn3t0pHP3io6tT0Cm0XaWBGfOTTtYiuTXU0IWmAynmH0MTBWr4r1sRPUpsoyZIuFKgkzyu29V66spue2GbyjUSvZueiYD0&s=10" class="d-block w-100" alt="Itachi">
+                    <div class="carousel-caption">
+                        <h5>Itachi Uchiha</h5>
+                        <p>"Carregaria o ódio do mundo inteiro e viveria na escuridão para garantir que você vivesse na luz."</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi-vefKxoYcHgZnSqAX9LJHqD7Nq4UIuJsQ&s" class="d-block w-100" alt="Gomez Addams">
+                    <div class="carousel-caption">
+                        <h5>Gomez Addams</h5>
+                        <p>"Eu morreria por você. Eu mataria por você. De qualquer forma, seria um prazer."</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8pmxqm068c7zXCKCZRpAojNFFJDyzjope7w&s" class="d-block w-100" alt="Meliodas">
+                    <div class="carousel-caption">
+                        <h5>Meliodas</h5>
+                        <p>"Viveria uma maldição de 3 mil anos e enfrentaria deuses apenas para te encontrar em cada vida."</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIQgXetHTy1gs0ntnD-VPXx822rONlzRwSDg&s" class="d-block w-100" alt="Meliodas">
+                    <div class="carousel-caption">
+                        <h5>Kratos</h5>
+                        <p>"Queimaria todo o olimpo inteiro apenas para defender minha familia"</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNH5L13cDk1NKD1VqwCffBWR8RsRIAziiTW0qK6phePWKxRe_rZzaW-bEPlWkHn2SyI6qQxyKPOCzwdwgPXYQGIhDmSUptIL-Wh_VhBNM&s=10" class="d-block w-100" alt="Meliodas">
+                    <div class="carousel-caption">
+                        <h5>Luffy</h5>
+                        <p>"Declarava guerra contra o governo mundial apenas para salvar você."</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRID0Khjd7LUzR-trNjvXI96CvSgqjX-N7rGqNn4R55oybXpj9dL5UviVfyS6eC6KiOqweg7ahtgnt8J42y37pEPVFuUlcAF474pE-FFtQ&s=10" class="d-block w-100" alt="Meliodas">
+                    <div class="carousel-caption">
+                        <h5>John Wick</h5>
+                        <p>"Ficaria contra todo o governo e mataria qualquer um no meu caminho apenas para proteger você."</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="lorde.png" class="d-block w-100" alt="Meliodas">
+                    <div class="carousel-caption">
+                        <h5>Lorde Adhan</h5>
+                        <p>"Mapearia todo o multiverso, visitaria todas as realidades e enfrentaria todos os desafios apenas para te encontrar e ver que em qualquer lugar estaremos juntos."</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-btn">Voltar ao Início</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
