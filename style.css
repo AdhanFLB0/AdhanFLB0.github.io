@@ -1,0 +1,211 @@
+:root {
+    --bg-dark: #0a0a0c;
+    --purple-primary: #6d28d9;
+    --purple-glow: rgba(109, 40, 217, 0.3);
+    --glass: rgba(255, 255, 255, 0.03);
+    --text-main: #e2e8f0;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #1a0b2e 0%, var(--bg-dark) 100%);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+}
+
+/* Sidebar Estilizada */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+}
+
+/* Grid de Cards */
+.grid-modules {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--glass);
+    border: 1px solid rgba(109, 40, 217, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    background: rgba(109, 40, 217, 0.1);
+    transform: translateY(-8px);
+    border-color: var(--purple-primary);
+    box-shadow: 0 10px 30px var(--purple-glow);
+}
+
+/* Status Pill */
+.status {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #22c55e33;
+    color: #4ade80;
+}
+
+/* Modal Styling */
+dialog {
+    background: #111;
+    color: white;
+    border: 1px solid var(--purple-primary);
+    border-radius: 20px;
+    width: 80%;
+    max-width: 900px;
+    padding: 0;
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+:root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed: 80px;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Sidebar Estados */
+.sidebar {
+    width: var(--sidebar-width);
+    transition: var(--transition);
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 15, 20, 0.8);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(109, 40, 217, 0.2);
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed);
+}
+
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .link-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Efeito Glow nos Cards */
+.card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(30, 30, 40, 0.7), rgba(10, 10, 15, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* Espessura da borda */
+    background: linear-gradient(45deg, transparent, var(--purple-primary), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Scrollbar Customizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--purple-primary);
+    border-radius: 10px;
+}
+:root {
+    --primary: #8b5cf6;
+    --primary-hover: #7c3aed;
+    --bg-dark: #050507;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 25%),
+                      radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 25%);
+}
+
+/* Sidebar Estilo Glass */
+.sidebar {
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cards Estilo DevClub */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(139, 92, 246, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Barra de Progresso Animada */
+.progress-container {
+    background: rgba(255, 255, 255, 0.1);
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #d8b4fe);
+    box-shadow: 0 0 10px var(--primary);
+    transition: width 1s ease-in-out;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
