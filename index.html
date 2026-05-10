@@ -1,510 +1,159 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superas ele</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Feliz dia das mães</title>
     <style>
-        h1{
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: #837e7e;
-            text-align: center;
-            margin-top: 50px;
+        body {
+            background-color: black;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
         }
-         /* --- TEMA "LIGHT/CLEAN" (Versão Purple Image - ORIGINAL MANTIDA) --- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-    }
 
-    img {
-      /* Ajuste para imagens dentro do frame */
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
 
-    .hidden {
-      display: none !important;
-    }
+        }
 
-    .container {
-      background: #fff;
-      width: 100%;
-      max-width: 950px;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(103, 58, 183, 0.15);
-      /* Sombra Roxa */
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid #e1e1e1;
-      animation: fadeIn 0.5s ease;
-    }
+        .botao {
+            display: flex;
+            margin-top: 20px;
+            align-items: center;
+            justify-content: center;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
+        .msg {
+            display: flex;
+            justify-content: center;
+        }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .txt {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
 
-    h1,
-    h2 {
-      text-align: center;
-      color: #673ab7;
-      /* Roxo Principal */
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
+        #feliz,
+        #dias,
+        #das,
+        #mães,
+        #exclamacao {
+            font-size: 48px;
+            font-weight: bold;
+        }
 
-    p {
-      color: #666;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        #feliz {
+            color: #ff69b4;
+        }
 
-    /* --- FORMULÁRIO --- */
-    .form-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
+        #dias {
+            color: red;
+        }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-      color: #555;
-    }
+        #das {
+            color: lightblue;
+        }
 
-    input[type="number"],
-    select,
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      background-color: #f9f9f9;
-      color: #333;
-      font-size: 16px;
-      transition: border 0.2s;
-    }
+        #mães {
+            color: green;
+        }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #673ab7;
-      background-color: #fff;
-      box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.1);
-    }
-
-    /* Checkboxes (ADICIONADO) */
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 5px;
-      background: #edebeb;
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #ffffff;
-      margin-bottom: 15px;
-    }
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .checkbox-item input {
-      width: 18px;
-      height: 18px;
-      accent-color: #673ab7;
-      margin: 0;
-    }
-
-    .extra-input {
-      margin-top: 5px;
-      display: block;
-    }
-
-    /* Consentimento (NOVO) */
-    .consent-wrapper {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: #fff;
-      padding: 15px;
-      border: 1px solid #d1c4e9;
-      border-radius: 8px;
-      margin: 20px 0;
-      text-align: left;
-    }
-
-    .consent-wrapper input {
-      margin-top: 4px;
-      width: 18px;
-      height: 18px;
-      accent-color: #673ab7;
-    }
-
-    .consent-wrapper label {
-      font-size: 0.9rem;
-      font-weight: 400;
-      line-height: 1.4;
-      margin: 0;
-      color: #555;
-    }
-
-
-    /* Botões */
-    .btn {
-      width: 100%;
-      padding: 14px 25px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #673ab7, #9575cd);
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: 0.2s;
-      margin-top: 10px;
-      box-shadow: 0 4px 15px rgba(103, 58, 183, 0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(103, 58, 183, 0.4);
-    }
-
-    .btn:disabled {
-      background: #bdc3c7;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    /* --- ÁREA DO QUIZ --- */
-    .header-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      color: #888;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .timer {
-      background: #ede7f6;
-      color: #673ab7;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid #d1c4e9;
-    }
-
-    /* Layout de Mídia */
-    .media-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 20px;
-      align-items: center;
-      width: 100%;
-    }
-
-    .image-column {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .image-frame {
-      width: 100%;
-      background: #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border: 1px solid #ddd;
-    }
-
-    /* Comparativo: Lado a Lado */
-    .media-container.dual {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      position: relative;
-    }
-
-    .media-container.dual::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: #ddd;
-      transform: translateX(-50%);
-    }
-
-    .dual .image-column {
-      width: 48%;
-    }
-
-    .card-label {
-      font-weight: 800;
-      color: #673ab7;
-      text-align: center;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Pergunta */
-    .question-text {
-      text-align: center;
-      margin: 20px 0;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #333;
-    }
-
-    /* Controles */
-    .quiz-controls {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .control-box {
-      flex: 1;
-      min-width: 300px;
-      padding: 20px;
-      border-radius: 12px;
-      background: #f8f9fa;
-      border: 1px solid #e9ecef;
-    }
-
-    .control-box h4 {
-      margin-bottom: 15px;
-      color: #673ab7;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-      font-weight: 600;
-    }
-
-    /* Radio Options */
-    .radio-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #fff;
-      transition: 0.2s;
-      margin-bottom: 10px;
-    }
-
-    .radio-option:hover {
-      border-color: #673ab7;
-      background: #f3e5f5;
-    }
-
-    .radio-option input {
-      margin: 0;
-      width: auto !important;
-      accent-color: #673ab7;
-      transform: scale(1.2);
-    }
-
-    .radio-option:has(input:checked) {
-      border-color: #673ab7;
-      background: #ede7f6;
-      color: #673ab7;
-    }
-
-    /* Scale Confiança */
-    .scale-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .scale-item {
-      flex: 1;
-    }
-
-    .scale-item input {
-      display: none;
-    }
-
-    .scale-item label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #fff;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 15px 5px;
-      cursor: pointer;
-      transition: 0.3s;
-      color: #888;
-      height: 100%;
-      font-weight: 600;
-    }
-
-    .scale-item label:hover {
-      border-color: #673ab7;
-      transform: translateY(-3px);
-    }
-
-    .scale-item input:checked+label {
-      background-color: #ede7f6;
-      color: #673ab7;
-    }
-
-    /* Tela Final */
-    .score-box {
-      background: #f3e5f5;
-      border: 2px solid #d1c4e9;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px auto;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .big-score {
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #512da8;
-    }
-
-    @media (max-width: 800px) {
-      .media-container.dual {
-        flex-direction: column;
-      }
-
-      .media-container.dual::after {
-        display: none;
-      }
-
-      .dual .image-column {
-        width: 100%;
-      }
-
-      .quiz-controls {
-        flex-direction: column;
-      }
-    }
-    button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #673ab7;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    div#diagnostico {
-        margin-top: 20px;
-        padding: 15px;
-        border: 1px solid #d400ff;
-        border-radius: 8px;
-        background-color: #080808;
-        color: #fffafa;
-        font-size: 16px;
-    }
-
-    select {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #d400ff;
-        border-radius: 8px;
-        background-color: #0e0d0d;
-        color: #fff;
-    }
-    p {
-        text-align: center;
-        font-weight: 600;
-        background: #0e0d0d;
-        color: #fff;
-    }
-
+        #exclamacao {
+            color: yellow;
+        }
     </style>
 </head>
+
 <body>
-    <div>
-        <header>
-            <h1>Psicologo automatico</h1>
-        </header>
+    <div class="msg">
+        <h1><span id="feliz">Feliz</span> <span id="dias">dias</span> <span id="das">das</span> <span
+                id="mães">mães</span><span id="exclamacao">!</span></h1>
     </div>
-    <div class="form-group">
-        <label style="color: #673ab7;">Como está se sentindo?</label>
-        <select id="reg-genero" name="genero" required>
-          <option value="ND">Selecione...</option>
-          <option value="A">Alegre</option>
-          <option value="T">Triste</option>
-          <option value="D">Depressiva</option>
-          <option value="S">Com saudades</option>
-          <option value="N">Não consigo definir</option>
-        </select>
+    <div class="txt">
+        <p id="texto">
+            <span id="palavra1">Nenhuma palavra expressaria minha gratidão, </span><br>
+            <span id="palavra2">mesmo isso não sendo uma caixa de chocolates, ou um desenho feito a mão, </span><br>
+            <span id="palavra3">Isso é apenas uma amostra de algo maior, </span><br>
+            <span id="palavra4">Algo que você ajudou a construir, </span><br>
+            <span id="palavra5">Mesmo eu não sendo o filho perfeito as vezes, </span><br>
+            <span id="palavra6">Você sempre esteve lá, me apoiando, me amando, </span><br>
+            <span id="palavra7">E por isso eu agradeço profundamente por tudo que você fez por mim, </span><br>
+            <span id="palavra8">E por tudo que você é, </span><br>
+            <span id="palavra9">Nas noites mais sombrias, </span><br>
+            <span id="palavra10">Nos dias mais alegres, </span><br>
+            <span id="palavra11">Você é a luz que ilumina meu caminho, </span><br>
+            <span id="palavra12">E por isso, neste dia especial, </span><br>
+            <span id="palavra13">Quero te desejar um feliz dia das mães, </span><br>
+            <span id="palavra14">E dizer que eu te amo mais do que palavras podem expressar. </span><br>
+        </p>
     </div>
-    <div>
-        <button type="button" onclick="confirmarSentimento()">Confirmar sentimento</button>
-    </div>
-    <div>
-        <h1>Diagnostico:</h1>
-        <div id="diagnostico">
-        
-        </div>
+    <div class="botao">
+        <button onclick="chamarAnimacao()">Clique aqui para uma surpresa!</button>
     </div>
     <script>
-        function confirmarSentimento() {
-            const sentimento = document.getElementById('reg-genero').value;
-            if (sentimento == "ND") {
-                alert(`Selecione algo, esta me testando desgraça?`);
-            } else if(sentimento == "N") {
-                document.getElementById("diagnostico").innerHTML = `<p>Meu diagnostico é que é frescura e você vai tomar um tapa meu, faz o L guria, como não consegue definir algo tão simples???</p>`;
-            } else if (sentimento == "A") {
-                document.getElementById("diagnostico").innerHTML = `<p>Meu diagnostico é que você deve continuar assim se não quiser apanhar</p>`;
-            } else if (sentimento == "T") {
-                document.getElementById("diagnostico").innerHTML = `<p>Meu diagnostico é que você tem que fazer o L e tomar vergonha na cara</p>`;
-            } else if (sentimento == "D") {
-                document.getElementById("diagnostico").innerHTML = `<p>Meu diagnostico é que você tem que fazer o L e comer um chocolate, pq meu deus, pra ficar depressiva por causa de macho tem que apanhar</p>`;
-            } else if (sentimento == "S") {
-                document.getElementById("diagnostico").innerHTML = `<p>Meu diagnostico é que você tem que fazer o L e tomar um banho, pq saudade de macho é frescura, tem que tomar um banho e esquecer esse lixo de macho, se não quiser apanhar</p>`;
-            }
+        const palavra = ['Feliz', 'dias', 'das', 'mães', '!'];
+        const ids = ['feliz', 'dias', 'das', 'mães', 'exclamacao'];
+        const frasesIds = ['palavra1', 'palavra2', 'palavra3', 'palavra4', 'palavra5', 'palavra6', 'palavra7', 'palavra8', 'palavra9', 'palavra10', 'palavra11', 'palavra12', 'palavra13', 'palavra14'];
+
+        // Correção 1: Função de espera que aceita o tempo em milissegundos
+        const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        function animarTexto() {
+            frasesIds.forEach((id, index) => {
+                setTimeout(() => {
+                    const el = document.getElementById(id);
+                    if (el) el.style.opacity = 1;
+                }, index * 800); // Aumentei um pouco o tempo para ficar mais legível
+            });
         }
+
+        function animarPalavras() {
+            ids.forEach((id, index) => {
+                setTimeout(() => {
+                    const el = document.getElementById(id);
+                    if (el) el.style.opacity = 1;
+                    // Correção 2: As cores já estão no CSS, não precisa setar via JS 
+                    // a menos que queira mudar dinamicamente.
+                }, index * 500);
+            });
+        }
+
+        async function chamarAnimacao() {
+            // Esconde o botão após o clique para não bugar a animação
+            document.querySelector('.botao').style.display = 'none';
+
+            animarPalavras();
+
+            // Correção 3: Agora o await funciona corretamente passando o tempo
+            await esperar(3000);
+
+            animarTexto();
+        }
+
+        // Inicialização: Esconder tudo ao carregar
+        
+            [...ids, ...frasesIds].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.style.opacity = 0;
+                    el.style.transition = 'opacity 1s'; // Transição mais suave
+                }
+            });
+
     </script>
 </body>
+
 </html>
