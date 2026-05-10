@@ -1,159 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz dia das mães</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Dia das Mães 💖</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            background-color: black;
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(255, 182, 193, 0.25), transparent 40%),
+                linear-gradient(135deg, #120013, #2a0030, #4b003f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+        }
 
+        /* Fundo brilhante */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.18), transparent 70%);
+            top: -200px;
+            right: -150px;
+            filter: blur(50px);
+            animation: pulse 6s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
+            bottom: -200px;
+            left: -100px;
+            filter: blur(40px);
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            padding: 50px;
+            border-radius: 30px;
+            backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow:
+                0 0 40px rgba(255, 105, 180, 0.25),
+                0 0 120px rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            margin-bottom: 30px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeDown 2s forwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ff7eb3, #ffd166, #7afcff, #c77dff);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 6s infinite linear;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+        }
+
+        @keyframes fadeDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mensagem {
+            margin-top: 20px;
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .mensagem span {
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .mensagem span.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .destaque {
+            color: #ffd6e7;
+            font-weight: 600;
         }
 
         .botao {
-            display: flex;
-            margin-top: 20px;
-            align-items: center;
-            justify-content: center;
+            margin-top: 45px;
         }
 
-        .msg {
-            display: flex;
-            justify-content: center;
-        }
-
-        .txt {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+        button {
+            padding: 18px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
             color: white;
-            font-size: 1em;
-            font-weight: bold;
-            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #ff4fa3, #ff85c2);
+            box-shadow:
+                0 10px 25px rgba(255, 105, 180, 0.35),
+                0 0 20px rgba(255, 182, 193, 0.2);
+            transition: 0.4s;
         }
 
-        #feliz,
-        #dias,
-        #das,
-        #mães,
-        #exclamacao {
-            font-size: 48px;
-            font-weight: bold;
+        button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow:
+                0 15px 35px rgba(255, 105, 180, 0.5),
+                0 0 30px rgba(255, 182, 193, 0.35);
         }
 
-        #feliz {
-            color: #ff69b4;
+        .heart {
+            position: fixed;
+            color: rgba(255, 182, 193, 0.8);
+            font-size: 20px;
+            animation: subir linear forwards;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        #dias {
-            color: red;
+        @keyframes subir {
+            from {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-100vh) scale(1.8);
+                opacity: 0;
+            }
         }
 
-        #das {
-            color: lightblue;
+        footer {
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
         }
 
-        #mães {
-            color: green;
-        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+            }
 
-        #exclamacao {
-            color: yellow;
+            .mensagem {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="msg">
-        <h1><span id="feliz">Feliz</span> <span id="dias">dias</span> <span id="das">das</span> <span
-                id="mães">mães</span><span id="exclamacao">!</span></h1>
+
+    <div class="container">
+
+        <h1>
+            <span class="gradient-text">Feliz Dia das Mães 💖</span>
+        </h1>
+
+        <div class="mensagem" id="mensagem">
+            <span>Não existe força maior do que o amor de uma mãe.</span>
+
+            <span>Mesmo quando o mundo parece difícil,</span>
+
+            <span>você continua sendo abrigo, carinho e esperança.</span>
+
+            <span class="destaque">Obrigado por cada conselho, cada abraço e cada cuidado.</span>
+
+            <span>Obrigado por acreditar em mim até nos momentos em que eu mesmo duvidei.</span>
+
+            <span>Você transformou pequenos momentos em memórias eternas.</span>
+
+            <span>E mesmo que eu nunca consiga retribuir tudo,</span>
+
+            <span>quero que saiba que cada gesto seu vive dentro de mim.</span>
+
+            <span class="destaque">Você é luz nos dias escuros.</span>
+
+            <span>É calmaria nas tempestades.</span>
+
+            <span>É amor em sua forma mais pura.</span>
+
+            <span>Hoje é apenas um lembrete do quanto você merece o mundo.</span>
+
+            <span class="destaque">Feliz Dia das Mães 🌹</span>
+
+            <span>Eu te amo infinitamente.</span>
+        </div>
+
+        <div class="botao">
+            <button onclick="iniciarSurpresa()">
+                Clique para receber amor 💌
+            </button>
+        </div>
+
+        <footer>
+            Feito com amor ❤️
+        </footer>
+
     </div>
-    <div class="txt">
-        <p id="texto">
-            <span id="palavra1">Nenhuma palavra expressaria minha gratidão, </span><br>
-            <span id="palavra2">mesmo isso não sendo uma caixa de chocolates, ou um desenho feito a mão, </span><br>
-            <span id="palavra3">Isso é apenas uma amostra de algo maior, </span><br>
-            <span id="palavra4">Algo que você ajudou a construir, </span><br>
-            <span id="palavra5">Mesmo eu não sendo o filho perfeito as vezes, </span><br>
-            <span id="palavra6">Você sempre esteve lá, me apoiando, me amando, </span><br>
-            <span id="palavra7">E por isso eu agradeço profundamente por tudo que você fez por mim, </span><br>
-            <span id="palavra8">E por tudo que você é, </span><br>
-            <span id="palavra9">Nas noites mais sombrias, </span><br>
-            <span id="palavra10">Nos dias mais alegres, </span><br>
-            <span id="palavra11">Você é a luz que ilumina meu caminho, </span><br>
-            <span id="palavra12">E por isso, neste dia especial, </span><br>
-            <span id="palavra13">Quero te desejar um feliz dia das mães, </span><br>
-            <span id="palavra14">E dizer que eu te amo mais do que palavras podem expressar. </span><br>
-        </p>
-    </div>
-    <div class="botao">
-        <button onclick="chamarAnimacao()">Clique aqui para uma surpresa!</button>
-    </div>
+
     <script>
-        const palavra = ['Feliz', 'dias', 'das', 'mães', '!'];
-        const ids = ['feliz', 'dias', 'das', 'mães', 'exclamacao'];
-        const frasesIds = ['palavra1', 'palavra2', 'palavra3', 'palavra4', 'palavra5', 'palavra6', 'palavra7', 'palavra8', 'palavra9', 'palavra10', 'palavra11', 'palavra12', 'palavra13', 'palavra14'];
+        const linhas = document.querySelectorAll('.mensagem span');
 
-        // Correção 1: Função de espera que aceita o tempo em milissegundos
-        const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        async function iniciarSurpresa() {
 
-        function animarTexto() {
-            frasesIds.forEach((id, index) => {
+            document.querySelector('button').disabled = true;
+
+            for (let i = 0; i < linhas.length; i++) {
+
+                await esperar(900);
+
+                linhas[i].classList.add('show');
+            }
+
+            criarCoracoes();
+        }
+
+        function esperar(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function criarCoracoes() {
+
+            setInterval(() => {
+
+                const heart = document.createElement('div');
+
+                heart.classList.add('heart');
+
+                heart.innerHTML = '💖';
+
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+
+                document.body.appendChild(heart);
+
                 setTimeout(() => {
-                    const el = document.getElementById(id);
-                    if (el) el.style.opacity = 1;
-                }, index * 800); // Aumentei um pouco o tempo para ficar mais legível
-            });
+                    heart.remove();
+                }, 7000);
+
+            }, 250);
         }
-
-        function animarPalavras() {
-            ids.forEach((id, index) => {
-                setTimeout(() => {
-                    const el = document.getElementById(id);
-                    if (el) el.style.opacity = 1;
-                    // Correção 2: As cores já estão no CSS, não precisa setar via JS 
-                    // a menos que queira mudar dinamicamente.
-                }, index * 500);
-            });
-        }
-
-        async function chamarAnimacao() {
-            // Esconde o botão após o clique para não bugar a animação
-            document.querySelector('.botao').style.display = 'none';
-
-            animarPalavras();
-
-            // Correção 3: Agora o await funciona corretamente passando o tempo
-            await esperar(3000);
-
-            animarTexto();
-        }
-
-        // Inicialização: Esconder tudo ao carregar
-        
-            [...ids, ...frasesIds].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.style.opacity = 0;
-                    el.style.transition = 'opacity 1s'; // Transição mais suave
-                }
-            });
-
     </script>
+
 </body>
 
 </html>
